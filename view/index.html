@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QrCode</title> 
+    <link rel="icon" href="./res/icon.png">
+    <script>
+        function detectar_mobile() { 
+            if( navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+            ){
+            return true;
+            }
+            else {
+            return false;
+            }
+        }
+
+        let mob = detectar_mobile();
+
+        if(mob)
+        {
+            window.location.href='./mobile.html';
+        }
+    </script>
+    <style>
+        body
+        {
+            background-color: rgb(36, 32, 32);
+        }
+        *
+        {
+            color:white;
+            font-family: monospace;
+        }
+        #container
+        {
+            background-color: rgb(43, 39, 39);
+            width: 70%;
+            height: 70%;
+            position: absolute;
+            left: 15%;
+            top:15%;
+            border: double purple;
+        }
+        #transform
+        {
+            width: 30%;
+            height: 40%; 
+            position: absolute;
+            left:10%;
+            bottom:20%;
+            background-color: rgb(75, 71, 71);
+            outline: none;
+            padding-left: 10px;
+            padding-top: 10px;
+            overflow: auto;
+            border-radius: 10px;
+            resize: none;
+            border: none;
+        }
+        #transform::-webkit-scrollbar {
+            width: 12px;               
+        }
+        #transform::-webkit-scrollbar-track {
+                background: rgb(44, 43, 42);       
+        }
+        #transform::-webkit-scrollbar-thumb {
+            background-color: rgb(30, 30, 31);  
+            border-radius: 20px;       
+            border: 3px solid rgb(61, 59, 54);  
+        }
+        #qrcode
+        {
+            width: 200px;
+            height: 200px; 
+            position: absolute;
+            right:10%;
+            bottom:20%;
+            background-color: rgb(75, 71, 71);
+            border-radius: 10px;
+            border: solid 10px rgb(75, 71, 71);
+        }
+        #save
+        {
+            position: absolute;
+            right:10px;
+            bottom:10px;
+            background-color: rgb(19, 92, 189);
+            border: none;
+            border-radius: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #saving
+        {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <h1 style="text-align: center;text-decoration: underline;">Gerador de QrCode</h1>
+        <textarea spellcheck="false" id='transform' placeholder="Digite algo aqui"></textarea>
+        <img src="./res/arrow.png" style="position: absolute;bottom: 35%;left:48%" onclick="create()">
+        <div id='qrcode'></div>
+        <button id='save'><a id='saving' download="QrCode.png">Salvar</a></button>
+        </div>
+    </div>
+
+    <script src="./js/qrcode.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
